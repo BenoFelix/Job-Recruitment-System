@@ -9,3 +9,5 @@ def decrypt(enc, key="Secret key"):
         dec_c = chr((256 + ord(c) - ord(key_c)) % 256)
         dec.append(dec_c)
     return "".join(dec)
+
+
