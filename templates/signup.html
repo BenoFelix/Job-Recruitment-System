@@ -1,80 +1,78 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>
-  </title>
-  <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- MDB -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css"
-      rel="stylesheet"
-    />
-    <!-- MDB -->
-<script
-type="text/javascript"
-src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"
-></script>
-</head>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.html">
-      <img src="/static/logo.png" class="me-2" height="50" width="270" alt="Ponjesly Logo" loading="lazy">
-    </a>
-    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01" aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarExample01">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="index.html">
-            <strong style="color: black">HOME</strong>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#r" rel="nofollow">
-            <strong style="color: black">CONTACT US</strong>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#a">
-            <strong style="color:black">LOGIN</strong>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav><br><br><br><br><br><br>
+{% extends 'HF.html'%}
+{% for message in get_flashed_messages() %}
+{% endfor %}
+{% block content %}
+<br><br><br><br><br><br>
+<div>
 <section class="mb-5" id="a">
         <h4 class="mb-5 text-center"><strong>SIGNUP</strong></h4><br>
 
         <div class="row d-flex justify-content-center">
           <div class="col-md-6">
-            <form action="{{  url_for('send_otp') }}" method="post">
+            <form action="{{  url_for('signup') }}" method="post">
               <!-- 2 column grid layout with text inputs for the first and last names -->
               <div class="row mb-4">
                 <div class="col">
                   <div class="form-outline">
-                    <input type="text" id="form3Example1" class="form-control" required/>
-                    <label class="form-label" for="form3Example1">First name</label>
+                    <input type="text" id="form3Example1" class="form-control" name="name" required/>
+                    <label class="form-label" for="form3Example1">Full Name</label>
                   </div>
-                </div>
-                <div class="col">
-                  <div class="form-outline">
-                    <input type="text" id="form3Example2" class="form-control" required/>
-                    <label class="form-label" for="form3Example2">Last name</label>
-                  </div>
-                </div>
-              </div>
+              <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
 
+                  <h6 class="mb-0 me-4">Account Type</h6>
+
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="type" id="ADMIN"
+                      value="Admin" />
+                    <label class="form-check-label" for="ADMIN">ADMIN</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="type" id="OWNER"
+                      value="Owner" />
+                    <label class="form-check-label" for="OWNER">OWNER</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0">
+                    <input class="form-check-input" type="radio" name="type" id="USER"
+                      value="User" checked/>
+                    <label class="form-check-label" for="USER">USER</label>
+                  </div>
+
+                </div>
+                  <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                  <h6 class="mb-0 me-4">Gender: </h6>
+
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="Gender" id="maleGender"
+                      value="Male" />
+                    <label class="form-check-label" for="maleGender">Male</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="Gender" id="femaleGender"
+                      value="Female" />
+                    <label class="form-check-label" for="femaleGender">Female</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0">
+                    <input class="form-check-input" type="radio" name="Gender" id="otherGender"
+                      value="Other" />
+                    <label class="form-check-label" for="otherGender">Other</label>
+                  </div>
+
+                </div>
+                   <div class="form-outline mb-4">
+                  <input type="date" id="form3Example9" name="Dob" class="form-control form-control-lg" required/>
+                  <label class="form-label" for="form3Example9">DOB</label>
+                </div>
+                  <div class="form-outline mb-4">
+                  <input type="text" id="form3Example98" name="phone" class="form-control form-control-lg" required/>
+                  <label class="form-label" for="form3Example98">Phone</label>
+                </div>
               <!-- Email input -->
               <div class="form-outline mb-4">
                 <input type="email" id="form3Example3" class="form-control" name="email" required/>
@@ -83,8 +81,13 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"
 
               <!-- Password input -->
               <div class="form-outline mb-4">
-                <input type="password" id="form3Example4" class="form-control" required/>
+                <input type="password" id="form3Example4" class="form-control" name="psw" required/>
                 <label class="form-label" for="form3Example4">Password</label>
+              </div>
+
+                  <div class="form-outline mb-4">
+                <input type="password" id="form3Example5" class="form-control" name="retype" required/>
+                <label class="form-label" for="form3Example4">ReEnter Password</label>
               </div>
 
               <!-- Checkbox -->
@@ -101,47 +104,12 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"
               </button>
               <br>
               <br>
-              <center><label class="form-label" for="form3Example3">If You already having account?<a href="{{  url_for('login') }}">Login</a></label></center>
+              <div style="text-align: center;"><label class="form-label" for="form3Example3">
+                If You're already having account?<a href="{{  url_for('login') }}">Login</a></label></div>
 </form>
 </div>
 </div>
 </section>
-  <!--Footer-->
-  <footer class="bg-dark text-center text-white">
-    <!-- Grid container -->
-    <div class="container p-4 pb-0">
-      <!-- Section: Social media -->
-      <section class="mb-4">
-        <!-- Facebook -->
-        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/ponjeslyengineering/"
-           role="button" target="_blank"><i class="fab fa-facebook-f"></i
-        ></a>
-  
-        <!-- Twitter -->
-        <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/PONJESLY_ENGG" role="button"
-          target="_blank"><i class="fab fa-twitter"></i
-        ></a>
-  
-        <!-- Instagram -->
-        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/ponjeslyengg_official/" role="button"
-          target="_blank"><i class="fab fa-instagram"></i
-        ></a>
-  
-        <!-- Linkedin -->
-        <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/school/ponjesly-college-of-engineering/" role="button"
-          target="_blank"><i class="fab fa-linkedin-in"></i
-        ></a>
-
-      </section>
-      <!-- Section: Social media -->
-    </div>
-    <!-- Grid container -->
-  
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2023 Copyright Ponjesly Groups
-    </div>
-    <!-- Copyright -->
-  </footer>
-</body>
-</html>
+</div>
+{% endblock %}
+{% set sticky = true %}
