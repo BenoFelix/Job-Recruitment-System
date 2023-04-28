@@ -1,0 +1,44 @@
+{% extends 'HF.html'%}
+{% for message in get_flashed_messages() %}
+
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+
+{% endfor %}
+{% block content %}
+<br><br><br><br>
+<h1 align="center">Users</h1>
+<br><br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Slno</th>
+      <th scope="col">uid</th>
+      <th scope="col">Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">DOB</th>
+      <th scope="col">Account_type</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for row in data %}
+    <tr>
+      <th scope="row">{{ loop.index }}</th>
+      <td>{{ row.id }}</td>
+      <td>{{ row.name }}</td>
+      <td>{{ row.gender }}</td>
+      <td>{{ row.dob }}</td>
+      <td>{{ row.account_type }}</td>
+      <td>{{ row.email }}</td>
+      <td>{{ row.phone }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<br><br><br><br>
+{% endblock %}

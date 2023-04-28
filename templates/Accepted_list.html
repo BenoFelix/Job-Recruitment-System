@@ -1,0 +1,61 @@
+{% extends 'HF.html'%}
+{% for message in get_flashed_messages() %}
+
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+
+{% endfor %}
+{% block content %}
+<br><br><br><br>
+<h1 align="center">Accepted</h1>
+<br><br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Slno</th>
+      <th scope="col">Accepted_uid</th>
+      <th scope="col">Name</th>
+        <th scope="col">Post</th>
+      <th scope="col">Department</th>
+      <th scope="col">Experience</th>
+		<th scope="col">Qualification</th>
+		<th scope="col">Gender</th>
+        <th scope="col">DOB</th>
+		<th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">CV</th>
+		<th scope="col">#</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for row in data %}
+    <tr>
+      <th scope="row">{{ loop.index }}</th>
+      <td>{{ row.accepted_user_id }}</td>
+      <td>{{ row.name }}</td>
+        <td>{{ row.post }}</td>
+		<td>{{ row.department }}</td>
+		<td>{{ row.experience }}</td>
+		<td>{{ row.qualification }}</td>
+		<td>{{ row.gender }}</td>
+		<td>{{ row.dob }}</td>
+        <td>{{ row.email }}</td>
+        <td>{{ row.phone }}</td>
+        <td><a href="{{ url_for('accepted_view_pdf', id=row.id) }}" target="_blank">View</a></td>
+        <td>
+            <form action="{{ url_for('move_to_selected', id=row.id) }}" method="post">
+              <input type="submit"  class="btn btn-success btn-sm mt-3" value="Select">
+            </form>
+            <form action="{{ url_for('remove_user', id=row.id) }}" method="post">
+              <input type="submit"  class="btn btn-danger btn-sm mt-3" value="Remove">
+            </form>
+          </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<br><br><br><br>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'HF.html'%}
+{% block content %}
+<br><br><br><br>
+<h1 align="center">Current Available Jobs</h1>
+<br><br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Slno</th>
+        <th scope="col">Post_uid</th>
+      <th scope="col">Job Title</th>
+      <th scope="col">Department</th>
+      <th scope="col">Description</th>
+		<th scope="col">Requirement</th>
+		<th scope="col">Job Type</th>
+		<th scope="col">Category</th>
+		<th scope="col">#</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for row in data %}
+    <tr>
+      <th scope="row">{{ loop.index }}</th>
+        <td>{{ row.post_job_id }}</td>
+      <td>{{ row.title }}</td>
+		<td>{{ row.department }}</td>
+		<td>{{ row.description }}</td>
+		<td>{{ row.requirement }}</td>
+		<td>{{ row.job_type }}</td>
+		<td>{{ row.category }}</td>
+		<td>
+            <form action="{{ url_for('delete_data', id=row.id) }}" method="post">
+              <input type="submit"  class="btn btn-danger btn-sm mt-3" value="Delete">
+            </form>
+          </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<br><br><br><br>
+{% endblock %}
