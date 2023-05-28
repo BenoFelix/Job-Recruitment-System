@@ -1,0 +1,58 @@
+{% extends 'HF.html' %}
+
+{% block content %}
+
+<br><br><br><br><br>
+{% for message in get_flashed_messages() %}
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+{% endfor %}
+	<h2 align="center">Dashboard</h2>
+<br>
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-8">
+
+    <strong>Name:</strong>
+	{{ data[0] }}<br/><br><br>
+
+	<strong>Id:</strong>
+	{{ data[1] }}<br/><br><br>
+
+			<strong>Phone:</strong>
+	{{ data[2] }}<br/><br><br>
+
+			<strong>Gender:</strong>
+	{{ data[3] }}<br/><br><br>
+
+	<strong>Email:</strong>
+	{{ data[4] }}<br><br><br>
+
+	<strong>Account type:</strong>
+	{{ data[5] }}<br/><br><br>
+
+	<strong>Date Joined:</strong>
+	{{ data[6] }}<br/><br><br>
+
+
+    <a href="{{ url_for('logout')}}" class="btn btn-secondary btn-sm">Logout</a>
+			<a href="{{  url_for('update_user', user_id=current_user.id)}}" class="btn btn-success btn-sm">Update</a>
+			<a href="{{ url_for('change_psw', user_id=current_user.id)}}" class="btn btn-info btn-sm">Change Password</a>
+			{%if current_user.account_type == "User"%}
+			<a href="{{  url_for('applications_display')}}" class="btn btn-warning btn-sm">
+				Applied Jobs</a>
+			{%endif%}
+			<br><br>
+			<form method="POST" action="{{ url_for('delete_user') }}">
+    			<button type="submit" onclick="return confirm('Did You want to delete this account?')"
+						class="btn btn-danger btn-sm">Delete Account</button>
+			</form>
+			<br><br>
+
+		</div></div></div>
+
+{% endblock %}
+{% set sticky = true %}

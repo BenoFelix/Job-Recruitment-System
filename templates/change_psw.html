@@ -1,0 +1,42 @@
+{% extends 'HF.html'%}
+{% for message in get_flashed_messages() %}
+{% endfor %}
+{% block content %}
+
+<br><br><br><br><br><br>
+{% for message in get_flashed_messages() %}
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+{% endfor %}
+<div>
+<section class="mb-5" id="a">
+        <h4 class="mb-5 text-center"><strong>Change Password</strong></h4><br>
+
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-6">
+            {% if current_user.is_authenticated %}
+            <form action="{{  url_for('change_psw', user_id=current_user.id) }}" method="post">
+              {% else %}
+              <form action="{{  url_for('change_psw', user_id=user_id) }}" method="post">
+              {% endif %}
+              <div class="form-outline mb-4">
+                <input type="password" id="form3Example4" class="form-control" name="psw" required/>
+                <label class="form-label" for="form3Example4">New Password</label>
+              </div>
+
+                  <div class="form-outline mb-4">
+                <input type="password" id="form3Example5" class="form-control" name="retype" required/>
+                <label class="form-label" for="form3Example4">ReEnter Password</label>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block mb-4">
+                Change
+              </button>
+              <br>
+              <br>
+              </form></form></div>
+</div>
+</section>
+</div>
+{% endblock %}

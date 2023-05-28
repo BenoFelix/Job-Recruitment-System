@@ -1,0 +1,70 @@
+{% extends 'HF.html'%}
+
+{% block content %}
+
+<br><br><br><br>
+{% for message in get_flashed_messages() %}
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+{% endfor %}
+<h1 align="center">Applications</h1>
+<br><br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Slno</th>
+      <th scope="col">Name</th>
+        <th scope="col">Post</th>
+      <th scope="col">Department</th>
+      <th scope="col">Experience</th>
+		<th scope="col">Qualification</th>
+		<th scope="col">Gender</th>
+        <th scope="col">DOB</th>
+		<th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">CV</th>
+		<th scope="col">#</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for row in data %}
+    <tr>
+      <th scope="row">{{ loop.index }}</th>
+      <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+		<td>{{ row[2] }}</td>
+		<td>{{ row[3] }}</td>
+		<td>{{ row[4] }}</td>
+		<td>{{ row[5] }}</td>
+		<td>{{ row[6] }}</td>
+        <td>{{ row[7] }}</td>
+        <td>{{ row[8] }}</td>
+        <td><a href="{{ url_for('view_pdf', name=row[9], key=row[-1]) }}" target="_blank">View</a></td>
+		<td>
+            {%if current_user.account_type == "Admin" or current_user.account_type == "Owner"%}
+            <form action="{{ url_for('move_to_accepted', id=row[10]) }}" method="post">
+                <input type="submit" class="btn btn-success btn-sm mt-3"
+                       onclick="return confirm('Please confirm that you want to Accept this application?')"
+                       value="Accept">
+            </form>
+            <form action="{{ url_for('reject', id=row[10]) }}" method="post">
+              <input type="submit"  class="btn btn-danger btn-sm mt-3"
+                     onclick="return confirm('Please confirm that you want to Reject this application?')"
+                     value="Reject">
+            </form>
+            {%else%}
+            <form action="{{ url_for('reject', id=row[10]) }}" method="post">
+              <input type="submit"  class="btn btn-danger btn-sm mt-3"
+                     onclick="return confirm('Please confirm that you want to Delete this application?')"
+                     value="Remove">
+            </form>
+            {%endif%}
+          </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<br><br><br><br>
+{% endblock %}

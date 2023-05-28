@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+<script
+type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"
+></script>
+<body> 
+  <header>
+    <style>
+
+      /* Carousel styling */
+      #introCarousel,
+      .carousel-inner,
+      .carousel-item,
+      .carousel-item.active {
+        height: 100vh;
+      }
+
+      .carousel-item:nth-child(1) {
+        background-image: url('/static/1383e04297c960350708569a405bf2ae.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      .carousel-item:nth-child(2) {
+        background-image: url('/static/photo-1498243691581-b145c3f54a5a.jpeg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      .carousel-item:nth-child(3) {
+        background-image: url('/static/337110fb7987861ffe91c5738f11f4a5.webp');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      @media (min-width: 992px) {
+        #introCarousel {
+          margin-top: -58.59px;
+        }
+      }
+
+      .navbar .nav-link {
+        color: #fff !important;
+      }
+
+
+    </style>
+
+{% extends 'HF.html'%}
+
+{% block content %}
+
+        {%if current_user.account_type=="Owner"%}
+      <br><br><br><br>
+    {% for message in get_flashed_messages() %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+      <div class="container">
+          <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img src="/static/job-hiring-social-media-post-examples.png" class="img-fluid" style="width: 500px;height: 225px" />
+                    <a href="">
+                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                    </a>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Post Jobs</h5>
+                    <p class="card-text">
+                        A new job is like a blank book and you are the author.
+                    </p>
+                    <a href="{{  url_for('post_job') }}" class="btn btn-primary">Post</a>
+                  </div>
+                </div>
+            </div><div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img src="/static/jobs.png" class="img-fluid" style="width: 500px;height: 250px"/>
+                    <a href="#!">
+                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                    </a>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Jobs</h5>
+                    <p class="card-text">
+                        New Jobs New Beginings
+                    </p>
+                    <a href="{{ url_for('display_jobs') }}" class="btn btn-primary">Check</a>
+                  </div>
+                </div>
+            </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="/static/application.jpg" class="img-fluid" style="width: 500px;height: 250px"/>
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Applications</h5>
+                <p class="card-text">
+                    If opportunity doesn’t knock, build a door.
+                </p>
+                <a href="{{ url_for('applications_display') }}" class="btn btn-primary">Check</a>
+              </div>
+            </div>
+          </div>
+              </div>
+          <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="/static/pic.jpg" class="img-fluid" style="width: 500px;height: 225px"/>
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Accepted</h5>
+                <p class="card-text">
+                    It does not matter how slowly you go as long as & you do not stop.
+                </p>
+                <a href="{{ url_for('accepted_list') }}" class="btn btn-primary">Check</a>
+              </div>
+            </div>
+          </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                  <img src="/static/smiling-happy-young-woman-surrounded-600w-1647758635-transformed.png"
+                       class="img-fluid" style="width: 500px;height: 250px"/>
+                  <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                  </a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Selected</h5>
+                  <p class="card-text">
+                      Stay Tuned, Amazing Things Will Happen
+                  </p>
+                  <a href="{{ url_for('selected_list') }}" class="btn btn-primary">Check</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                  <img src="/static/user.avif" class="img-fluid" style="width: 500px;height: 250px"/>
+                  <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                  </a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">User</h5>
+                  <p class="card-text">
+                      Look at,you Have Unlocked
+                  </p>
+                  <a href="{{ url_for('user_list') }}" class="btn btn-primary">Check</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img src="/static/create.jpg" class="img-fluid" style="width: 500px;height: 225px" />
+                    <a href="">
+                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                    </a>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Create account</h5>
+                    <p class="card-text">
+                        Create your account now and unlock a world of possibilities.
+                    </p>
+                    <a href="{{  url_for('signup') }}" class="btn btn-primary">Create</a>
+                  </div>
+                </div>
+            </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img src="/static/block.jpg" class="img-fluid" style="width: 500px;height: 250px" />
+                    <a href="">
+                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                    </a>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Blocked account</h5>
+                    <p class="card-text">
+                        Blocking people is good for your peace of mind.
+                    </p>
+                    <a href="{{  url_for('block_list') }}" class="btn btn-primary">Check</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+              {%elif current_user.account_type=="Admin"%}
+     <br><br><br><br>
+    {% for message in get_flashed_messages() %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+      <div class="container">
+          <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img src="/static/job-hiring-social-media-post-examples.png" class="img-fluid" style="width: 500px;height: 225px"/>
+                    <a href="">
+                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                    </a>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Post Jobs</h5>
+                    <p class="card-text">
+                        A new job is like a blank book and you are the author.
+                    </p>
+                    <a href="{{  url_for('post_job') }}" class="btn btn-primary">Post</a>
+                  </div>
+                </div>
+            </div><div class="col-lg-4 col-md-6 mb-4">
+                <div class="card">
+                  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img src="/static/jobs.png" class="img-fluid" style="width: 500px;height: 250px"/>
+                    <a href="#!">
+                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                    </a>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Jobs</h5>
+                    <p class="card-text">
+                        New Jobs New Beginings
+                    </p>
+                    <a href="{{ url_for('display_jobs') }}" class="btn btn-primary">Check</a>
+                  </div>
+                </div>
+            </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="/static/application.jpg" class="img-fluid" style="width: 500px;height: 250px"/>
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Applications</h5>
+                <p class="card-text">
+                    If opportunity doesn’t knock, build a door.
+                </p>
+                <a href="{{ url_for('applications_display') }}" class="btn btn-primary">Check</a>
+              </div>
+            </div>
+          </div>
+              </div>
+          <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="/static/pic.jpg" class="img-fluid" style="width: 500px;height: 225px"/>
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Accepted</h5>
+                <p class="card-text">
+                    It does not matter how slowly you go as long as & you do not stop.
+                </p>
+                <a href="{{ url_for('accepted_list') }}" class="btn btn-primary">Check</a>
+              </div>
+            </div>
+          </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="/static/mba.jpeg" class="img-fluid" style="width: 500px;height: 250px"/>
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Selected</h5>
+                <p class="card-text">
+                    Stay Tuned, Amazing Things Will Happen
+                </p>
+                <a href="{{ url_for('selected_list') }}" class="btn btn-primary">Check</a>
+              </div>
+            </div>
+          </div>
+          </div>
+      </div>
+              {%else%}
+    {% for message in get_flashed_messages() %}
+    <br>
+    <br><br>
+
+    {% endfor %}
+
+    <!-- Carousel wrapper -->
+    <div id="introCarousel" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"></li>
+        <li data-mdb-target="#introCarousel" data-mdb-slide-to="1"></li>
+        <li data-mdb-target="#introCarousel" data-mdb-slide-to="2"></li>
+      </ol>
+
+      <!-- Inner -->
+      <div class="carousel-inner">
+        <!-- Single item -->
+        <div class="carousel-item active">
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <div class="text-white text-center">
+                <h1 class="mb-3"> Institute of Science<BR>
+                 & Technology</h1>
+                <a class="btn btn-outline-light btn-lg m-2" href="#e"
+                  role="button" rel="nofollow">SEARCH JOBS</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single item -->
+        <div class="carousel-item">
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <div class="text-white text-center">
+                <h2 ><i>I'm going to live a new life.”</i></h2>
+                <h2><i>  Educate students in engineering at the highest level and support innovation.
+                    Change in technology.</i></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single item -->
+        <div class="carousel-item">
+          <div class="mask" style="
+                background: linear-gradient(
+                  45deg,
+                  rgba(29, 236, 197, 0.7),
+                  rgba(91, 14, 214, 0.7) 100%
+                );
+              ">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <div class="text-white text-center">
+                  {% if current_user.is_authenticated %}
+                  <a class="btn btn-outline-light btn-lg m-2"
+                   href="{{ url_for('logout') }}" role="button">LOGOUT</a>
+                  {% else %}
+                <a class="btn btn-outline-light btn-lg m-2"
+                   href="{{ url_for('signup') }}" role="button">SIGNUP</a>
+                <a class="btn btn-outline-light btn-lg m-2"
+                  href="{{ url_for('login')}}" role="button">LOGIN</a>
+                  {% endif %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Inner -->
+
+      <!-- Controls -->
+      <a class="carousel-control-prev" href="#introCarousel" role="button" data-mdb-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#introCarousel" role="button" data-mdb-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <!-- Carousel wrapper -->
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="mt-5">
+    <div class="container">
+      <!--Section: Content-->
+      <section>
+        <div class="row">
+          <div class="col-md-6 gx-5 mb-4">
+            <div data-mdb-ripple-color="light">
+              <img src="/static/1.jpg" class="img-fluid"/>
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="col-md-6 gx-5 mb-4">
+            <h4><strong>IST COLLEGE</strong></h4>
+            <p class="text-muted">
+              IST College of Engineering is dedicated to offering top-notch technical education to everyone and
+                preparing students to meet the challenges of a rapidly changing world in the future. Their goal is to
+                have one of the greatest engineering colleges in the country.
+            </p>
+            <p><strong>LET THE JOB IS YOURS APPLY SOON!!</strong></p>
+            <p class="text-muted">
+               The goal of IST College of Engineering is to have their own educational institutions be the best
+                engineering colleges, the best placement engineering colleges, and university rank engineering colleges.
+              They are committed to providing quality technical education to
+                everyone and preparing the students with the necessary knowledge, skills, and competency to face the
+                challenges of the changing world of tomorrow. The chairman took on the
+                challenge of giving technical education a new dimension and a true purpose for the benefit of society.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!--Section: Content-->
+
+      <hr class="my-5" />
+
+      <!--Section: Content-->
+      <section class="text-center">
+        <h4 class="mb-5" id="e"><strong>NEW JOBS</strong></h4>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="/static/computerscience.jpg" class="img-fluid" style="width: 500px;height: 225px"/>
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Computer Science</h5>
+                <p class="card-text">
+                    Computer science empowers students to create the world of tomorrow
+                </p>
+                <a href="{{ url_for('cse_jobs') }}" class="btn btn-primary">Check</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="/static/IT.jpg" class="img-fluid" style="width: 500px;height: 250px"/>
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Information Technology</h5>
+                <p class="card-text">
+                    We are changing the world with technology
+                </p>
+                <a href="{{ url_for('it_jobs') }}" class="btn btn-primary">Check</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                 <img src="/static/ECE.jpg" class="img-fluid" style="width: 500px;height: 225px"/>
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Electronics and Communication Engineering</h5>
+                <p class="card-text">
+                    We shape our buildings, thereafter they shape us.
+                </p>
+                <a href="{{ url_for('ece_jobs') }}" class="btn btn-primary">Check</a>
+              </div>
+            </div>
+          </div>
+        </div><br><br>
+          <div class="row">
+          <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="/static/eee.jpg" class="img-fluid" style="width: 500px;height: 250px"/>
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Electrical and Electronics Engineering</h5>
+                <p class="card-text">
+                    No resistance can drop our potential
+                </p>
+                <a href="{{ url_for('eee_jobs') }}" class="btn btn-primary">Check</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="/static/Mech.jpg" class="img-fluid" style="width: 500px;height: 250px"/>
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Mechanical</h5>
+                <p class="card-text">
+                    No tech without Mech
+                </p>
+                <a href="{{ url_for('mech_jobs') }}" class="btn btn-primary">Check</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="/static/civil.jpg" class="img-fluid" style="width: 500px;height: 250px"/>
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Civil</h5>
+                <p class="card-text">
+                    We shape our buildings, thereafter they shape us.
+                </p>
+                <a href="{{ url_for('civil_jobs') }}" class="btn btn-primary">Check</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br><br>
+          <div class="row">
+          <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="/static/AI.jpg" class="img-fluid" style="width: 500px;height: 225px"/>
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Artificial Intelligence and Data Science</h5>
+                <p class="card-text">
+                    Predicting  the future isn't magic it's artificial intelligence
+                </p>
+                <a href="{{ url_for('aids_jobs') }}" class="btn btn-primary">Check</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="/static/mba.jpeg" class="img-fluid" style="width: 500px;height: 250px"/>
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">MBA</h5>
+                <p class="card-text">
+                    MBA unlocks the golden door of freedom
+                </p>
+                <a href="{{ url_for('mba_jobs') }}" class="btn btn-primary">Check</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="/static/other.jpg" class="img-fluid" style="width: 500px;height: 250px"/>
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Other </h5>
+                <p class="card-text">
+                    Work to become,not to acquire
+                </p>
+                <a href="{{ url_for('other_jobs') }}" class="btn btn-primary">Check</a>
+              </div>
+            </div>
+          </div>
+          </div>
+
+
+
+      </section>
+      <!--Section: Content-->
+
+
+      <!--Section: Content-->
+    </div>
+  </main>
+  <!--Main layout-->
+
+  <!--Footer-->
+  <footer class="bg-light text-lg-start">
+
+
+
+    <div class="text-center py-4 align-items-center">
+      <p>Follow US SO JOBS BE YOURS</p>
+      <a href="https://www.youtube.com/@ponjeslyfineartsclub6549" class="btn btn-primary m-1" role="button"
+        rel="nofollow" target="_blank">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a href="https://www.facebook.com/ponjeslyengineering/" class="btn btn-primary m-1" role="button" rel="nofollow"
+        target="_blank">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://twitter.com/PONJESLY_ENGG" class="btn btn-primary m-1" role="button" rel="nofollow"
+        target="_blank">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </div>
+      <hr class="m-0" />
+    <!--Section: Contact v.2-->
+<section class="mb-4" id="r">
+
+  <!--Section heading-->
+  <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+  <!--Section description-->
+  <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
+      a matter of hours to help you.</p>
+
+  <div class="row">
+
+      <!--Grid column-->
+      <div class="col-md-9 mb-md-0 mb-5">
+          <form id="contact-form" name="contact-form" action="mailto:test5test005@gmail.com" method="POST" enctype="text/plain">
+
+              <!--Grid row-->
+              <div class="row">
+
+                  <!--Grid column-->
+                  <div class="col-md-6">
+                      <div class="md-form mb-0">
+                          <input type="text" id="name" name="name" class="form-control" placeholder="name" required>
+                          <label for="name" class=""></label>
+                      </div>
+                  </div>
+                  <!--Grid column-->
+
+                  <!--Grid column-->
+                  <div class="col-md-6">
+                      <div class="md-form mb-0">
+                          <input type="text" id="email" name="email" class="form-control" placeholder="Email" required>
+                          <label for="email" class=""></label>
+                      </div>
+                  </div>
+                  <!--Grid column-->
+
+              </div>
+              <!--Grid row-->
+
+              <!--Grid row-->
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="md-form mb-0">
+                          <input type="text" id="subject" name="subject" class="form-control" placeholder="subject" required>
+                          <label for="subject" class=""></label>
+                      </div>
+                  </div>
+              </div>
+              <!--Grid row-->
+
+              <!--Grid row-->
+              <div class="row">
+
+                  <!--Grid column-->
+                  <div class="col-md-12">
+
+                      <div class="md-form">
+                          <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"
+                                    placeholder="Your Message" required></textarea>
+                          <label for="message"></label>
+                      </div>
+
+                  </div>
+              </div>
+              <!--Grid row-->
+
+          </form>
+
+          <div class="text-center text-md-left">
+              <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+          </div>
+          <div class="status"></div>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-3 text-center">
+          <ul class="list-unstyled mb-0">
+              <li><a href="https://goo.gl/maps/8xK6WV1yVEVNUbbU6" target="_blank"><i class="fas fa-map-marker-alt fa-2x"></i>
+                  <p> KanyaKumari,Tamil Nadu,India,Earth</p></a>
+              </li>
+
+              <li><i class="fas fa-phone mt-4 fa-2x"></i>
+                <p><a href="tel:+91-4652 – 259680"> +91-4652 – 259680</a> |
+                  <a href="tel:+91-4652 – 259605"> +91-4652 – 259605</a></p>
+              </li>
+
+              <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+                  <p><a href="mailto:test5test005@gmail.com">test5test005@gmail.com</a>
+                  </p>
+              </li>
+          </ul>
+      </div>
+      <!--Grid column-->
+
+  </div>
+
+</section>
+<!--Section: Contact v.2-->
+{%endif%}
+
+
+{% endblock %}
+  {% set show_log = true %}
+      {%if current_user.account_type=="Owner" or current_user.account_type=="Admin"%}
+        {% set show_contact = false %}
+        {% set sticky = true %}
+      {%else%}
+        {% set show_contact = true %}
+        {% set sticky = true %}
+      {%endif%}
+
+</footer>
+</body>
+</html>

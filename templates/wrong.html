@@ -1,0 +1,18 @@
+{% extends 'HF.html'%}
+{% block content %}
+
+<div class="container">
+    <br><br><br><br><br><br>
+	{% for message in get_flashed_messages() %}
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+{% endfor %}
+<center>
+<h1>Sorry!!!</h1>
+<p>Something Went Wrong!!!</p>
+  <p>Go to <a href="{{ url_for('home') }}">Home</a></p>
+</center>
+</div>
+{% endblock %}

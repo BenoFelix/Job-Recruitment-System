@@ -1,0 +1,126 @@
+{% extends 'HF.html'%}
+{% block content %}
+
+<br><br><br><br><br><br>
+
+{% for message in get_flashed_messages() %}
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+{% endfor %}
+<div>
+<section class="mb-5" id="a">
+        <h4 class="mb-5 text-center"><strong>SIGNUP</strong></h4><br>
+
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-6">
+            <form action="{{  url_for('signup') }}" method="post">
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row mb-4">
+                <div class="col">
+                  <div class="form-outline">
+                    <input type="text" id="form3Example1" class="form-control" name="name" required/>
+                    <label class="form-label" for="form3Example1">Full Name</label>
+                  </div><br>
+                    {%if current_user.is_authenticated%}
+                    {%if current_user.account_type == "Owner" %}
+              <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                  <h6 class="mb-0 me-4">Account Type</h6>
+
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="type" id="ADMIN"
+                      value="Admin" />
+                    <label class="form-check-label" for="ADMIN">ADMIN</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="type" id="OWNER"
+                      value="Owner" />
+                    <label class="form-check-label" for="OWNER">OWNER</label>
+                  </div>
+
+                </div>
+                    {%endif%}
+                    {%endif%}
+
+                  <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                  <h6 class="mb-0 me-4">Gender: </h6>
+
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="Gender" id="maleGender"
+                      value="Male" />
+                    <label class="form-check-label" for="maleGender">Male</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="Gender" id="femaleGender"
+                      value="Female" />
+                    <label class="form-check-label" for="femaleGender">Female</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0">
+                    <input class="form-check-input" type="radio" name="Gender" id="otherGender"
+                      value="Other" />
+                    <label class="form-check-label" for="otherGender">Other</label>
+                  </div><br>
+
+                </div>
+                   <div class="form-outline">
+                  <input type="text" id="form3Example9" name="Dob" class="form-control form-control-lg"
+                         placeholder="dd/mm/yyyy" required/>
+                  <label class="form-label" for="form3Example9">DOB</label>
+                </div><br>
+                  <div class="form-outline">
+                  <input type="text" id="form3Example98" name="phone" class="form-control form-control-lg" required/>
+                  <label class="form-label" for="form3Example98">Phone</label>
+                </div><br>
+
+              <div class="form-outline col-auto">
+                <input type="email" id="form3Example3" class="form-control" name="email" required/>
+                <label class="form-label" for="form3Example3">Email</label>
+              </div><br>
+
+              <div class="form-outline col-auto">
+                <input type="password" id="form3Example4" class="form-control" name="psw" required/>
+                <label class="form-label" for="form3Example4">Password</label>
+              </div><br>
+                  <div class="form-outline col-auto">
+                    <input type="password" id="form3Example5" class="form-control" name="retype" required/>
+                    <label class="form-label" for="form3Example4">ReEnter Password</label>
+                  </div><br>
+              {%if current_user.account_type == "Owner"%}
+                  {%else%}
+              <div class="form-check d-flex justify-content-center mb-4">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" checked required/>
+                <label class="form-check-label" for="form2Example3">
+                  THE ABOVE MENTIONED EVERYTHING IS TRUE AS YOURS
+                </label>
+              </div><br>
+              {%endif%}
+              <button type="submit"
+                      onclick="return confirm('Did you want to create with this credentials?')"
+                      class="btn btn-primary btn-block mb-4">
+                Sign up
+              </button>
+              <br>
+              <br>
+                  {%if current_user.account_type == "Owner"%}
+                  {%else%}
+              <div style="text-align: center;"><label class="form-label" for="form3Example3">
+                If You're already having account?<a href="{{  url_for('login') }}">Login</a></label></div>
+
+</div>
+                {%endif%}
+</div>
+              </form>
+          </div>
+        </div>
+</section>
+</div>
+{% endblock %}
+{% set sticky = true %}

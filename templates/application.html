@@ -1,0 +1,136 @@
+{% extends 'HF.html'%}
+{% block content %}
+
+<br><br><br><br>
+{% for message in get_flashed_messages() %}
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+{% endfor %}
+    <section class="h-100 bg-light">
+  <div class="container">
+    <form method="post" action="{{ url_for('applied_form_submission') }}" enctype="multipart/form-data">
+            <div class="col-xl-6">
+              <div class="card-body p-md-5 text-black">
+                <h3 class="mb-5 text-uppercase" align="center"> JOB APPLICATION FORM</h3>
+
+
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline col-auto">
+                        <input type="text" id="form3Example1m" name="name"
+                               class="form-control form-control-lg" required />
+                        <label class="form-label" for="form3Example1m">Full name</label>
+                      </div><br>
+
+
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline col-auto">
+                      <input type="text" id="form3Example1n1" name="jobpost"
+                             class="form-control form-control-lg" required/>
+                      <label class="form-label" for="form3Example1n1">Post of application</label>
+                    </div>
+                  </div><br>
+
+
+                <div class="form-outline col-auto">
+                  <input type="text" id="form3Example99" name="Department"
+                         class="form-control form-control-lg" required/>
+                  <label class="form-label" for="form3Example99">Department</label>
+                </div><br>
+
+                <div class="form-outline col-auto">
+                  <input type="text" id="form3Example5" name="Qualification"
+                         class="form-control form-control-lg" required/>
+                  <label class="form-label" for="form3Example5">Qualification</label>
+                </div><br>
+
+                <div class="form-outline col-auto">
+                  <input type="text" id="form3Example" name="Experience" class="form-control form-control-lg" required/>
+                  <label class="form-label" for="form3Example">Experience</label>
+                </div><br>
+
+                <div class="form-outline col-auto">
+                  <textarea class="form-control" rows="3" name="address" placeholder="Enter Your Full Address"
+                            id="form3Example8" required>
+                  </textarea>
+                  <label class="form-label" for="form3Example8">Address</label>
+                </div><br>
+
+                <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                  <h6 class="mb-0 me-4">Gender: </h6>
+
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="Gender" id="maleGender"
+                      value="Male" />
+                    <label class="form-check-label" for="maleGender">Male</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="Gender" id="femaleGender"
+                      value="Female" />
+                    <label class="form-check-label" for="femaleGender">Female</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0">
+                    <input class="form-check-input" type="radio" name="Gender" id="otherGender"
+                      value="Other" />
+                    <label class="form-check-label" for="otherGender">Other</label>
+                  </div>
+
+                </div>
+                      <br>
+
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline col-auto">
+                      <input type="text" id="form3Example1" name="state" class="form-control form-control-lg" required/>
+                      <label class="form-label" for="form3Example1">State</label>
+                    </div>
+                  </div>
+                  <br>
+
+
+                <div class="form-outline">
+                  <input type="text" id="form3Example9" name="Dob" class="form-control form-control-lg"
+                         placeholder="dd/mm/yyyy" required/>
+                  <label class="form-label" for="form3Example9">DOB</label>
+                </div><br>
+
+                <div class="form-outline col-auto">
+                  <input type="text" id="form3Example90" name="pincode" class="form-control form-control-lg" required/>
+                  <label class="form-label" for="form3Example90">Pincode</label>
+                </div><br>
+
+                <div class="form-outline col-auto">
+                  <input type="text" id="form3Example97" name="email" class="form-control form-control-lg" required/>
+                  <label class="form-label" for="form3Example97">Email ID</label>
+                </div>
+<br>
+                <div class="form-outline col-auto">
+                  <input type="text" id="form3Example98" name="phone" class="form-control form-control-lg" required/>
+                  <label class="form-label" for="form3Example98">Phone</label>
+                </div>
+<br>
+               
+                <label class="form-label" for="form3Example97">Upload CV</label>
+                <input class="form-control form-control-lg" name="pdf" id="formFileLg" type="file" required/>
+                <div class="small text-muted mt-2">Upload your CV/Resume or any other relevant file in pdf format</div>
+               <br>
+
+                <div class="d-flex justify-content-end pt-3">
+                  <button type="submit"
+                          onclick="return confirm('Are you sure You want to apply with this information?')"
+                          class="btn btn-warning btn-lg ms-2">Submit form</button>
+                </div>
+
+              </div>
+            </div>
+
+  </div>
+    </form></div>
+</section>
+<br><br><br><br>
+{% endblock %}
+{% set sticky = true %}

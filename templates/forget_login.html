@@ -1,0 +1,40 @@
+{% extends 'HF.html'%}
+{% block content %}
+<br><br><br><br>
+
+{% for message in get_flashed_messages() %}
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+{% endfor %}
+<div>
+<section class="mb-5" id="a">
+        <h4 class="mb-5 text-center"><strong>Forget Password LOGIN</strong></h4><br><br>
+
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-6">
+            <form action="{{  url_for('forget_login') }}" method="post">
+
+              <div class="form-outline mb-4">
+                <input type="email" id="form3Example3" class="form-control" name="email" required/>
+                <label class="form-label" for="form3Example3">Email</label>
+              </div>
+              <br>
+
+              <div class="form-outline mb-4">
+                <input type="password" id="form3Example4" class="form-control" name="psw" required/>
+                <label class="form-label" for="form3Example4">Password</label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block mb-4">
+                Login
+              </button>
+
+</form>
+</div>
+</div>
+</section>
+</div>
+
+{% endblock %}
