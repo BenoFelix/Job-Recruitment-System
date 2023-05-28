@@ -1,6 +1,4 @@
 from flask import Flask, render_template, request, redirect, flash, url_for, Response
-import smtplib
-from Dec import decrypt
 from flask_sqlalchemy import SQLAlchemy
 from pytz import timezone
 from werkzeug.utils import secure_filename
@@ -9,7 +7,7 @@ import os
 import pymysql
 from datetime import datetime
 from cryptography.fernet import Fernet
-from encrpyt import encrypt, encrypt_password, hash0, hash1, hash2
+from Function import encrypt, encrypt_password, hash0, hash1, hash2, decrypt, mail
 from flask_login import UserMixin, login_user, login_required, logout_user, current_user, LoginManager
 
 app = Flask(__name__)
@@ -274,12 +272,6 @@ def forget_login():
     except Exception as e:
         flash(str(e))
         return render_template("wrong.html", current_year=current_year)
-
-
-def save_pdf(file, name):
-    path = os.path.join(app.config['UPLOAD_FOLDER'], name)
-    with open(path, 'wb') as f:
-        f.write(file)
 
 
 @app.route(f'/{encrypt("applied")}', methods=['GET', 'POST'])
@@ -1022,19 +1014,10 @@ def unblock_user(use):
         return render_template("wrong.html", current_year=current_year)
 
 
-def mail(email, content, sub):
-    MY_EMAIL = decrypt('w4fDisOWw6bCmsOowoXDnsOZwqnCg8KawqPDmcOSw5XCicOXwpPDnMOCw5I=')
-    MY_PASSWORD = decrypt("wr3DmMOcw57DnMOewpLDjMOaw57DgMOOw5nDoMOaw64=")
-    with smtplib.SMTP("smtp.gmail.com") as connection:
-        connection.starttls()
-        connection.login(MY_EMAIL, MY_PASSWORD)
-        message = f"Subject:{sub}\n\n{content}"
-        message = message.encode('utf-8')
-        connection.sendmail(
-            from_addr=MY_EMAIL,
-            to_addrs=email,
-            msg=message
-        )
+def save_pdf(file, name):
+    path = os.path.join(app.config['UPLOAD_FOLDER'], name)
+    with open(path, 'wb') as f:
+        f.write(file)
 
 
 def delete_pdf(name):
