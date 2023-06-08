@@ -12,8 +12,7 @@ from flask_login import UserMixin, login_user, login_required, logout_user, curr
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'my-secret-key'
-app.config['SQLALCHEMY_DATABASE_URI'] = \
-    f'{decrypt("w4DDnsOWw6PDkcKfwpDDpMOSw7LDhsOWw4_CrMKUwqPCksOaw5TDrcKNwrXDhMOlw5jDq1DDncOJwqrChcKYwqPDnsOUw5fCgcOXw43DqMOGw5nCksOVw5TDoMKMw5DDjMOe")}'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password@localhost/DatabaseName'
 UPLOAD_FOLDER = 'cvs/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 db = SQLAlchemy(app)
