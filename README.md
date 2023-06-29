@@ -1,7 +1,7 @@
 # Job-Recruitment-System
 Mini Project For 6th semester
 
-This project was done based on the College theme.
+This project was done based on the College theme using Flask framework and MySQL database.
 
 There will be three actors in this project: Owner
                                             Admin
