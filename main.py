@@ -197,7 +197,7 @@ def change_psw(user_id):
         user = Users.query.get(user_id)
         if request.method == 'POST':
             salt = 'wqPDlMOPw5PChcOkwoHDn8OZw6I='
-            Password = hash2(hash1(hash0(encrypt(key="ponjesly", clear=encrypt_password(request.form['psw'] + salt)))))
+            Password = hash2(hash1(hash0(encrypt(key="Key", clear=encrypt_password(request.form['psw'] + salt)))))
             if request.form['retype'] == request.form['psw']:
                 msg = "Your Password has been updated."
                 subject = "Password Changed!"
@@ -841,7 +841,7 @@ def login():
         if request.method == 'POST':
             email = request.form['email']
             salt = 'wqPDlMOPw5PChcOkwoHDn8OZw6I='
-            passwo = hash2(hash1(hash0(encrypt(key="ponjesly", clear=encrypt_password(request.form['psw'] + salt)))))
+            passwo = hash2(hash1(hash0(encrypt(key="Key", clear=encrypt_password(request.form['psw'] + salt)))))
             user = Users.query.filter_by(email=encrypt(email)).first()
             if user:
                 psw = Users.query.filter_by(psw=encrypt(passwo)).first()
@@ -884,7 +884,7 @@ def signup():
                     user = Users.query.filter_by(email=email).first()
                     salt = 'wqPDlMOPw5PChcOkwoHDn8OZw6I='
                     Password = \
-                        hash2(hash1(hash0(encrypt(key="ponjesly", clear=encrypt_password(request.form['psw'] + salt)))))
+                        hash2(hash1(hash0(encrypt(key="Key", clear=encrypt_password(request.form['psw'] + salt)))))
                     if user:
                         flash("You already having the account on this email!")
                         return render_template("login.html", current_year=current_year)
