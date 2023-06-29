@@ -3,7 +3,7 @@ import hashlib
 import smtplib
 
 
-def encrypt(clear, key="Secret key"):
+def encrypt(clear, key="Nothing"):
     enc = []
     for i, c in enumerate(clear):
         key_c = key[i % len(key)]
