@@ -1,6 +1,5 @@
 {% extends 'HF.html'%}
 {% block content %}
-<div class="container">
     <br><br><br><br><br><br>
 {% for message in get_flashed_messages() %}
     <div class="alert alert-warning alert-dismissible fade show" role="alert" onclick="closeAlert(this)">
@@ -17,7 +16,7 @@
         }, 500);
     }
 </script>
-<div class="
+<div class="container">
 <center>
 <h1>404</h1>
 <p>Page Not Found.Try Again...</p>
